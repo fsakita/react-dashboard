@@ -1,8 +1,6 @@
-## React Starter Kit — "isomorphic" web app boilerplate
+## React Dashboard - Flatlogic 2016 Dashboard App
 
-[![Support us on Bountysource](https://dl.dropboxusercontent.com/u/16006521/react-starter-kit/banner.png)](https://salt.bountysource.com/teams/react-starter-kit)<br>
-
-> [React Starter Kit](https://www.reactstarterkit.com) is an opinionated
+> **React Dashboard** is an opinionated
 > boilerplate for web development built on top of Facebook's
 > [React](https://facebook.github.io/react/) library,
 > [Node.js](https://nodejs.org/) / [Express](http://expressjs.com/) server
@@ -11,15 +9,6 @@
 > [Babel](http://babeljs.io/) and [BrowserSync](http://www.browsersync.io/).
 > Helping you to stay productive following the best practices. A solid starting
 > point for both professionals and newcomers to the industry.
-
-See [demo](http://demo.reactstarterkit.com) &nbsp;|&nbsp;
-[docs](https://github.com/kriasoft/react-starter-kit/tree/master/docs) &nbsp;|&nbsp;
-[bugs & feature requests](https://waffle.io/kriasoft/react-starter-kit) &nbsp;|&nbsp;
-join [#react-starter-kit](https://gitter.im/kriasoft/react-starter-kit) chatroom to stay up to date &nbsp;|&nbsp;
-visit our sponsors:
-
-[![Rollbar - Full-stack error tracking for all apps in any language](https://dl.dropboxusercontent.com/u/16006521/react-starter-kit/rollbar.png)](https://rollbar.com/?utm_source=reactstartkit(github)&utm_medium=link&utm_campaign=reactstartkit(github)) &nbsp;&nbsp;
-[![Localize - Translate your web app in minutes](https://dl.dropboxusercontent.com/u/16006521/react-starter-kit/localize.png)](https://localizejs.com/?cid=802&utm_source=rsk)
 
 ### Getting Started
 
@@ -62,12 +51,6 @@ visit our sponsors:
 └── preprocessor.js             # ES6 transpiler settings for Jest
 ```
 
-### Related Projects
-
-  * [Membership Database](https://github.com/membership/membership.db) — SQL schema boilerplate for user accounts, profiles, roles, and auth claims
-  * [React Static Boilerplate](https://github.com/koistya/react-static-boilerplate) — Generates static websites from React components
-  * [Babel Starter Kit](https://github.com/kriasoft/babel-starter-kit) — Boilerplate for authoring JavaScript/React.js libraries
-  * [React Decorators](https://github.com/kriasoft/react-decorators) — A collection of higher-order React components
 
 ### Learn More
 
@@ -87,12 +70,5 @@ visit our sponsors:
   * [@koistya](https://www.codementor.io/koistya) on Codementor — Mentorship, pair coding, code reviews
   * support@kriasoft.com — Customization requests, help with GraphQL/Relay, database design etc.
 
-### License
-
-Copyright © 2014-2016 Kriasoft, LLC. This source code is licensed under the MIT
-license found in the [LICENSE.txt](https://github.com/kriasoft/react-starter-kit/blob/master/LICENSE.txt)
-file. The documentation to the project is licensed under the
-[CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/) license.
-
 ---
-Made with ♥ by Konstantin Tarkus ([@koistya](https://twitter.com/koistya)) and [contributors](https://github.com/kriasoft/react-starter-kit/graphs/contributors)
+Made with ♥ by Flatlogic ([@flatlogic](https://twitter.com/flatlogicinc))
