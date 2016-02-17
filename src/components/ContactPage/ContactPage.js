@@ -30,7 +30,7 @@ class ContactPage extends Component {
         <div className={`container ${s.container}`}>
           <h1>{title}</h1>
           <p>...</p>
-          <Button><i className='glyphicon glyphicon-user'></i> React Bootstrap</Button>
+          <Button><i className="glyphicon glyphicon-user"></i> React Bootstrap</Button>
         </div>
       </div>
     );
