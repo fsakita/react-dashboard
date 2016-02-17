@@ -8,32 +8,32 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './RegisterPage.scss';
+import withStyles from '../../../node_modules/isomorphic-style-loader/lib/withStyles';
+import s from './NotFoundView.scss';
 
-const title = 'New User Registration';
+const title = 'Page Not Found';
 
-class RegisterPage extends Component {
+class NotFoundView extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
+    onPageNotFound: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
     this.context.onSetTitle(title);
+    this.context.onPageNotFound();
   }
 
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>{title}</h1>
-          <p>...</p>
-        </div>
+      <div>
+        <h1>{title}</h1>
+        <p>Sorry, but the page you were trying to view does not exist.</p>
       </div>
     );
   }
 
 }
 
-export default withStyles(RegisterPage, s);
+export default withStyles(NotFoundView, s);

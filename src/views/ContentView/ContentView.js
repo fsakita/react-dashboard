@@ -8,10 +8,10 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './ContentPage.scss';
+import withStyles from '../../../node_modules/isomorphic-style-loader/lib/withStyles';
+import s from './ContentView.scss';
 
-class ContentPage extends Component {
+class ContentView extends Component {
 
   static propTypes = {
     path: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ class ContentPage extends Component {
 
 }
 
-export default withStyles(ContentPage, s);
+export default withStyles(ContentView, s);

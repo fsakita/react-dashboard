@@ -8,12 +8,12 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './NotFoundPage.scss';
+import withStyles from '../../../node_modules/isomorphic-style-loader/lib/withStyles';
+import s from './ErrorView.scss';
 
-const title = 'Page Not Found';
+const title = 'Error';
 
-class NotFoundPage extends Component {
+class ErrorView extends Component {
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
@@ -22,18 +22,17 @@ class NotFoundPage extends Component {
 
   componentWillMount() {
     this.context.onSetTitle(title);
-    this.context.onPageNotFound();
   }
 
   render() {
     return (
       <div>
         <h1>{title}</h1>
-        <p>Sorry, but the page you were trying to view does not exist.</p>
+        <p>Sorry, an critical error occurred on this page.</p>
       </div>
     );
   }
 
 }
 
-export default withStyles(NotFoundPage, s);
+export default withStyles(ErrorView, s);
