@@ -1,7 +1,11 @@
 @import '../../styles/app';
 
+
 .root {
-  background: #373277;
-  color: #fff;
+  margin-left: $sidebar-width;
+}
+
+
+.container {
   padding: $padding-large-vertical $padding-large-horizontal;
 }

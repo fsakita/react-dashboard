@@ -11,7 +11,7 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from '../../../node_modules/isomorphic-style-loader/lib/withStyles';
 import s from './LoginView.scss';
 
-const title = 'Log In';
+const title = 'Login Page';
 
 class LoginView extends Component {
 
@@ -25,11 +25,9 @@ class LoginView extends Component {
 
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>{title}</h1>
-          <p>...</p>
-        </div>
+      <div className="container text-center mt-lg">
+        <h1>{title}</h1>
+        <p>Login form</p>
       </div>
     );
   }

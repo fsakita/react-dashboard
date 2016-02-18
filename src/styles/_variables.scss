@@ -3,20 +3,21 @@
  * For an example of using bootstrap variables see ContactPage.scss
  */
 
-/*
- * Typography
- * ========================================================================== */
-
+//== Typography
+//
+$font-size-base: 16px;
 $font-family-base:      'Segoe UI', 'HelveticaNeue-Light', sans-serif; // overriding bootstrap variable
 
-/*
- * Layout
- * ========================================================================== */
 
-$max-content-width:     1000px; // custom application variable
-
-
-/*
- * Misc
- * ========================================================================== */
+//== Iconography
+//
 $icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/'; // overriding bootstrap variable
+
+
+//== Scaffolding
+//
+$body-bg: #f0f0f0 !default;
+
+//== Components
+//
+$sidebar-width: 300px;

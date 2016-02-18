@@ -10,15 +10,13 @@
 import React, { Component, PropTypes } from 'react';
 import s from './App.scss';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Header from '../Header';
-import Feedback from '../Feedback';
-import Footer from '../Footer';
+import Sidebar from '../Sidebar';
+import Content from '../Content';
 
 class App extends Component {
 
   static propTypes = {
     children: PropTypes.element.isRequired,
-    error: PropTypes.object,
   };
 
   static contextTypes = {
@@ -26,14 +24,12 @@ class App extends Component {
   };
 
   render() {
-    return !this.props.error ? (
+    return (
       <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
+        <Sidebar />
+        <Content children={this.props.children} />
       </div>
-    ) : this.props.children;
+    );
   }
 
 }

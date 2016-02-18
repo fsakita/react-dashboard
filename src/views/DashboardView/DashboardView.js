@@ -16,9 +16,7 @@ class DashboardView extends Component {
 
   render() {
     return (
-      <div className="container">
         <h1>{title}</h1>
-      </div>
     );
   }
 
