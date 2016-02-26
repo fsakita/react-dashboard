@@ -7,16 +7,46 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Sidebar.scss';
 import { Link, IndexLink } from 'react-router';
 
 class Sidebar extends Component {
 
+  static propTypes = {
+    open: PropTypes.bool,
+    static: PropTypes.bool,
+    onSetOpen: React.PropTypes.func
+  };
+
+  static defaultProps = {
+    open: false,
+    static: false,
+    onSetOpen: () => {}
+  };
+
+  constructor(props) {
+    super(props);
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+  }
+
+  onMouseEnter() {
+    if (!this.props.open) {
+      this.props.onSetOpen(true);
+    }
+  }
+
+  onMouseLeave() {
+    if (this.props.open) {
+      this.props.onSetOpen(false);
+    }
+  }
+
   render() {
     return (
-      <nav className={s.root}>
+      <nav className={s.root} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
         <IndexLink className={s.brand} to="/">
           <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
           <span className={s.brandTxt}>Your Company</span>

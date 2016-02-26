@@ -2,7 +2,18 @@
 
 
 .root {
-  margin-left: $sidebar-width;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: $sidebar-width-closed;
+  background: $body-bg;
+  transition: left $sidebar-transition-time ease-in-out, right $sidebar-transition-time ease-in-out;
+
+  &.sidebar-open {
+    left: $sidebar-width-open;
+    right: -($sidebar-width-open - $sidebar-width-closed);
+  }
 }
 
 

@@ -9,11 +9,12 @@ class Content extends Component {
 
   static propTypes = {
     children: PropTypes.element.isRequired,
+    sidebarOpen: PropTypes.bool,
   };
 
   render() {
     return (
-      <main className={s.root}>
+      <main className={[s.root, this.props.sidebarOpen ? s['sidebar-open'] : ''].join(' ')}>
         <Header />
         <div className={s.container}>
           {this.props.children}
