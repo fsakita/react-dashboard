@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   onSidebarStaticToggle() {
-    console.log(1);
+    this.setState({sidebarStatic: !this.state.sidebarStatic})
   }
 
   getChildContext() {

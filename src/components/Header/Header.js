@@ -15,7 +15,7 @@ import { IndexLink } from 'react-router';
 class Header extends Component {
 
   static contextTypes = {
-    onSidebarStaticToggle: PropTypes.func.required
+    onSidebarStaticToggle: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -25,7 +25,7 @@ class Header extends Component {
   }
 
   onSidebarToggleClick() {
-    this.context.onSidebarStaticToggle()
+    this.context.onSidebarStaticToggle();
   }
 
   render() {

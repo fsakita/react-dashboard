@@ -6,9 +6,14 @@
   top: 0;
   bottom: 0;
   right: 0;
-  left: $sidebar-width-closed;
   background: $body-bg;
   transition: left $sidebar-transition-time ease-in-out, right $sidebar-transition-time ease-in-out;
+
+  left: $sidebar-width-closed;
+
+  @media (max-width: $screen-md) {
+    left: 0;
+  }
 
   &.sidebar-open {
     left: $sidebar-width-open;

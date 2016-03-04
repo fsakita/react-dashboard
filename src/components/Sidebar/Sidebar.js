@@ -28,25 +28,34 @@ class Sidebar extends Component {
 
   constructor(props) {
     super(props);
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
+
+    this.state = {
+      static: this.props.static
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.static != undefined && newProps.static !== this.state.static) {
+      this.setState({static: newProps.static, open: newProps.static});
+      this.props.onSetOpen(newProps.static);
+    }
   }
 
   onMouseEnter() {
-    if (!this.props.open) {
+    if (!this.state.static && !this.props.open) {
       this.props.onSetOpen(true);
     }
   }
 
   onMouseLeave() {
-    if (this.props.open) {
+    if (!this.state.static && this.props.open) {
       this.props.onSetOpen(false);
     }
   }
 
   render() {
     return (
-      <nav className={s.root} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+      <nav className={s.root} onMouseEnter={this.onMouseEnter.bind(this)} onMouseLeave={this.onMouseLeave.bind(this)}>
         <IndexLink className={s.brand} to="/">
           <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
           <span className={s.brandTxt}>Your Company</span>
