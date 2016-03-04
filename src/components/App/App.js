@@ -10,30 +10,54 @@
 import React, { Component, PropTypes } from 'react';
 import s from './App.scss';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Header from '../Header';
-import Feedback from '../Feedback';
-import Footer from '../Footer';
+import Sidebar from '../Sidebar';
+import Content from '../Content';
 
 class App extends Component {
 
   static propTypes = {
     children: PropTypes.element.isRequired,
-    error: PropTypes.object,
   };
 
-  static contextTypes = {
-    insertCss: PropTypes.func,
+  static childContextTypes = {
+    onSidebarStaticToggle: PropTypes.func
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      sidebarOpen: false,
+      sidebarStatic: false
+    };
+
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    this.onSidebarStaticToggle = this.onSidebarStaticToggle.bind(this);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({ sidebarOpen: open });
+  }
+
+  onSidebarStaticToggle() {
+    console.log(1);
+  }
+
+  getChildContext() {
+    return {
+      onSidebarStaticToggle: this.onSidebarStaticToggle
+    };
+  }
 
   render() {
-    return !this.props.error ? (
-      <div>
-        <Header />
-        {this.props.children}
-        <Feedback />
-        <Footer />
+    return (
+      <div className={s.root}>
+        <Sidebar open={this.state.sidebarOpen}
+                 static={this.state.sidebarStatic}
+                 onSetOpen={this.onSetSidebarOpen} />
+        <Content children={this.props.children}
+                 sidebarOpen={this.state.sidebarOpen} />
       </div>
-    ) : this.props.children;
+    );
   }
 
 }

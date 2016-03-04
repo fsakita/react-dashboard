@@ -7,29 +7,33 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.scss';
 import { IndexLink } from 'react-router';
-import Navigation from '../Navigation';
 
 class Header extends Component {
 
+  static contextTypes = {
+    onSidebarStaticToggle: PropTypes.func.required
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.onSidebarToggleClick = this.onSidebarToggleClick.bind(this);
+  }
+
+  onSidebarToggleClick() {
+    this.context.onSidebarStaticToggle()
+  }
+
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <Navigation className={s.nav} />
-          <IndexLink className={s.brand} to="/">
-            <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
-            <span className={s.brandTxt}>Your Company</span>
-          </IndexLink>
-          <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
-          </div>
+        <div className={s.root}>
+          <a href="#" onClick={this.onSidebarToggleClick}>Toggle</a>
+          Header text and Navigation
         </div>
-      </div>
     );
   }
 

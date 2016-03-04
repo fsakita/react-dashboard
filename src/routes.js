@@ -8,32 +8,32 @@
  */
 
 import React from 'react';
-import { IndexRoute, Route } from 'react-router';
+import { IndexRoute, Route, IndexRedirect } from 'react-router';
 import fetch from './core/fetch';
 import App from './components/App';
-import ContentPage from './components/ContentPage';
-import ContactPage from './components/ContactPage';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
-import NotFoundPage from './components/NotFoundPage';
+import DashboardView from './views/DashboardView';
+import ContentView from './views/ContentView';
+import LoginView from './views/LoginView';
+import NotFoundView from './views/NotFoundView';
 
 async function getContextComponent(location, callback) {
-  const response = await fetch(`/api/content?path=${location.pathname}`);
+  var paths = location.pathname.split('/');
+  const response = await fetch(`/api/content?path=${paths[paths.length - 1]}`);
   const content = await response.json();
   // using an arrow to pass page instance instead of page class; cb accepts class by default
-  callback(null, () => <ContentPage {...content} />);
+  callback(null, () => <ContentView {...content} />);
 }
 
 export default (
-  <Route>
-    <Route path="/" component={App}>
-      <IndexRoute getComponent={getContextComponent} />
-      <Route path="contact" component={ContactPage} />
-      <Route path="login" component={LoginPage} />
-      <Route path="register" component={RegisterPage} />
+  <Route path="/">
+    <IndexRedirect to="app/dashboard"></IndexRedirect>
+    <Route path="app" component={App}>
+      <IndexRedirect to="dashboard"></IndexRedirect>
+      <Route path="dashboard" component={DashboardView} />
       <Route path="about" getComponent={getContextComponent} />
       <Route path="privacy" getComponent={getContextComponent} />
     </Route>
-    <Route path="*" component={NotFoundPage} />
+    <Route path="login" component={LoginView} />
+    <Route path="*" component={NotFoundView} />
   </Route>
 );
