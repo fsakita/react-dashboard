@@ -1,0 +1,29 @@
+@import '../../../styles/app';
+
+.headerLink {
+  padding: 0 $padding-base-horizontal;
+  cursor: pointer;
+}
+
+
+.panel {
+  border: none;
+  box-shadow: none;
+  margin: 0;
+
+  div {
+    padding: 0;
+  }
+
+  ul {
+    padding-left: 0;
+    li {
+      padding: 5px 20px;
+      list-style: none;
+
+      &:hover {
+        background-color: gray;
+      }
+    }
+  }
+}

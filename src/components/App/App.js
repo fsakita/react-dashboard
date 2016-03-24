@@ -10,11 +10,10 @@
 import React, { Component, PropTypes } from 'react';
 import s from './App.scss';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import Sidebar from '../Sidebar';
-import Content from '../Content';
+import Sidebar from '../Sidebar/Sidebar';
+import Content from '../Content/Content';
 
 class App extends Component {
-
   static propTypes = {
     children: PropTypes.element.isRequired,
   };
