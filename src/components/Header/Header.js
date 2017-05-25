@@ -34,7 +34,7 @@ class Header extends React.Component {
     return (
       <Navbar fluid>
         <Nav pullLeft>
-          <NavItem className={['visible-xs', s.menuButton].join(' ')} eventKey={1} href="#" onClick={this.props.sidebarToggle}>
+          <NavItem className={[s.menuButton].join(' ')} eventKey={1} href="#" onClick={this.props.sidebarToggle}>
             <Glyphicon glyph="menu-hamburger" />
           </NavItem>
         </Nav>

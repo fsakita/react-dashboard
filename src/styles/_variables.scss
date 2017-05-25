@@ -10,10 +10,10 @@
 /*
  * Typography
  * ======================================================================== */
-$font-size-base: 16px;
+$font-size-base: 12px;
 $font-family-base: 'Nunito', 'HelveticaNeue-Light', sans-serif;
 
-$text-color:                     #555;
+$text-color:                     #666;
 $link-color:                     #337ab7;
 
 $brand-primary:         #3754a5 !default; // #337ab7
@@ -62,7 +62,7 @@ $max-content-width: 1000px;
 
 $grid-float-breakpoint: 0;
 
-$body-bg: #e5e9ec;
+$body-bg: #f9f6f2;
 
 /*
  * Media queries breakpoints
@@ -78,15 +78,18 @@ $screen-lg-min: 1200px; /* Large screen / wide desktop */
 
 $content-padding-horizontal: 30px;
 $content-padding-vertical: 40px;
+$content-border-color: #eee;
 
-$navbar-height:      50px;
-$navbar-border-radius: 0;
-$sidebar-width-open: 200px;
+$navbar-height:      70px;
+$navbar-bg-color: #fff;
+$navbar-border-color: $content-border-color;
+$sidebar-width-open: 235px;
 $sidebar-width-closed: 50px;
 $sidebar-transition-time: 0.3s !default;
 
-$sidebar-bg-color: #50585a;
-$sidebar-color: #fff;
+$sidebar-bg-color: $navbar-bg-color;
+$sidebar-border-color: #dcdcdc;
+$sidebar-color: #4d4d4d;
 
 $navbar-margin-bottom: -$navbar-height;
 $breadcrumb-separator: '>';
@@ -95,7 +98,7 @@ $breadcrumb-bg: transparent;
 
 $badge-font-weight: 600;
 
-$widget-bg: #fff;
+$widget-bg: $body-bg;
 $widget-title-color: #444;
 
 $btn-inverse-color: #fff;
