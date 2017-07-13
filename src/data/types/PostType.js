@@ -6,7 +6,7 @@ import {
   GraphQLNonNull as NonNull,
 } from 'graphql';
 
-let PostType = new ObjectType({
+const PostType = new ObjectType({
   name: 'Post',
   description: 'A post',
   fields: {
@@ -25,8 +25,8 @@ let PostType = new ObjectType({
     updatedAt: {
       type: StringType,
       description: 'The date post was updated',
-    }
-  }
+    },
+  },
 });
 
 export default PostType;

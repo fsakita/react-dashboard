@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { Row, Col, Form, FormGroup, FormControl, Button, ControlLabel, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -14,6 +15,12 @@ class PostNew extends React.Component {
     description: 'About description',
   };
 
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    message: PropTypes.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -21,6 +28,10 @@ class PostNew extends React.Component {
       title: '',
       content: '',
     };
+
+    this.doCreatePost = this.doCreatePost.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
+    this.changeContent = this.changeContent.bind(this);
   }
 
   changeTitle(event) {
@@ -34,7 +45,7 @@ class PostNew extends React.Component {
   doCreatePost(e) {
     this.props
       .dispatch(createPost({ title: this.state.title, content: this.state.content }))
-      .then(() => this.setState({title: '', content: ''}));
+      .then(() => this.setState({ title: '', content: '' }));
     e.preventDefault();
   }
 
@@ -50,12 +61,12 @@ class PostNew extends React.Component {
           <Col sm={6}>
             <Widget
               title={
-            <span>
+                <span>
           Add Post <span className="fw-semi-bold">Form</span>
-            </span>
+                </span>
         }
             >
-              <Form horizontal onSubmit={this.doCreatePost.bind(this)}>
+              <Form horizontal onSubmit={this.doCreatePost}>
                 {
                   this.props.message && (
                     <Alert className="alert-sm" bsStyle="info">
@@ -68,9 +79,11 @@ class PostNew extends React.Component {
                     Title
                   </Col>
                   <Col sm={10}>
-                    <FormControl type="text" placeholder="Title" value={this.state.title}
-                                 required
-                                 onChange={this.changeTitle.bind(this)} />
+                    <FormControl
+                      type="text" placeholder="Title" value={this.state.title}
+                      required
+                      onChange={this.changeTitle}
+                    />
                   </Col>
                 </FormGroup>
                 <FormGroup controlId="formHorizontalEmail">
@@ -78,12 +91,12 @@ class PostNew extends React.Component {
                     Content
                   </Col>
                   <Col sm={10}>
-                    <textarea className="form-control" placeholder="Post Content"
-                              value={this.state.content}
-                              required
-                              onChange={this.changeContent.bind(this)}>
-
-                    </textarea>
+                    <textarea
+                      className="form-control" placeholder="Post Content"
+                      value={this.state.content}
+                      required
+                      onChange={this.changeContent}
+                    />
                   </Col>
                 </FormGroup>
 
@@ -111,7 +124,7 @@ class PostNew extends React.Component {
 function mapStateToProps(state) {
   return {
     isFetching: state.posts.isFetching,
-    message: state.posts.message
+    message: state.posts.message,
   };
 }
 

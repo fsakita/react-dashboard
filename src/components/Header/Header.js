@@ -19,11 +19,17 @@ import s from './Header.scss';
 class Header extends React.Component {
   static propTypes = {
     sidebarToggle: PropTypes.func,
+    dispatch: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     sidebarToggle: () => {},
   };
+
+  constructor(props) {
+    super(props);
+    this.doLogout = this.doLogout.bind(this);
+  }
 
   doLogout() {
     this.props
@@ -54,7 +60,7 @@ class Header extends React.Component {
             <MenuItem divider />
             <MenuItem eventKey={3.4}>Separated link</MenuItem>
           </NavDropdown>
-          <NavItem className="hidden-xs" eventKey={2} onClick={this.doLogout.bind(this)}>Logout</NavItem>
+          <NavItem className="hidden-xs" eventKey={2} onClick={this.doLogout}>Logout</NavItem>
         </Nav>
       </Navbar>
     );

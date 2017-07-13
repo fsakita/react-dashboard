@@ -49,7 +49,7 @@ const ContextType = {
 // };
 
 
-const PrivateRoute = ({ component, isAuthenticated, ...rest }) => (
+const PrivateRoute = ({ component, isAuthenticated, ...rest }) => ( //eslint-disable-line
   <Route
     {...rest} render={props => (
     isAuthenticated ? (
@@ -58,7 +58,7 @@ const PrivateRoute = ({ component, isAuthenticated, ...rest }) => (
       <Redirect
         to={{
           pathname: '/login',
-          state: { from: props.location },
+          state: { from: props.location }, //eslint-disable-line
         }}
       />
     )
@@ -70,7 +70,7 @@ class App extends React.PureComponent {
 
   static propTypes = {
     context: PropTypes.shape(ContextType),
-    store: PropTypes.any,
+    isAuthenticated: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {

@@ -18,8 +18,8 @@ class Widget extends React.Component {
     className: PropTypes.string,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node
-    ]),
+      PropTypes.node,
+    ]).isRequired,
   };
 
   static defaultProps = {
@@ -32,7 +32,7 @@ class Widget extends React.Component {
       <section className={[s.widget, this.props.className].join(' ')}>
         {
           this.props.title && (
-            typeof this.props.title == 'string'
+            typeof this.props.title === 'string'
             ? <h5 className={s.title}>{this.props.title}</h5>
             : <header className={s.title}>{this.props.title}</header>
           )

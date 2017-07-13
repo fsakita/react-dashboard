@@ -16,15 +16,15 @@ const schemaConfig = {
       news,
       posts,
     },
-  })
+  }),
 };
 
-if(!__DEV__) {
-  schemaConfig['mutation'] = new ObjectType({
+if (!__DEV__) {
+  schemaConfig.mutation = new ObjectType({
     name: 'Mutation',
     fields: {
-      addPost
-    }
+      addPost,
+    },
   });
 }
 

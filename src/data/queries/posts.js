@@ -7,7 +7,7 @@ import Post from '../models/Post';
 
 const posts = {
   type: new List(PostType),
-  resolve: resolver(Post)
+  resolve: resolver(Post),
 };
 
 export default posts;

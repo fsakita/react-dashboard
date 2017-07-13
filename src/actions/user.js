@@ -86,6 +86,7 @@ export function loginUser(creds) {
         localStorage.setItem('id_token', user.id_token);
           // Dispatch the success action
         dispatch(receiveLogin(user));
-      }).catch(err => console.log('Error: ', err));
+        return 0;
+      }).catch(err => console.log('Error: ', err)); // eslint-disable-line
   };
 }

@@ -187,6 +187,9 @@
       "git add"
     ]
   },
+  "pre-commit": [
+    "lint"
+  ],
   "scripts": {
     "lint:js": "eslint src tools",
     "lint:css": "stylelint \"src/**/*.{css,less,scss,sss}\"",

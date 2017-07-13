@@ -18,6 +18,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router';
 import ReactDOM from 'react-dom/server';
 import PrettyError from 'pretty-error';
+import { Provider } from 'react-redux';
 import App from './components/App';
 import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './pages/error/ErrorPage';
@@ -32,8 +33,6 @@ import { receiveLogin, receiveLogout } from './actions/user';
 import config from './config';
 import assets from './assets.json'; // eslint-disable-line import/no-unresolved
 import theme from './styles/theme.scss';
-import cookie from 'react-cookie';
-import { Provider } from 'react-redux';
 
 const app = express();
 
@@ -81,10 +80,10 @@ app.post('/login', (req, res) => {
   // replace with real database check in production
   // const user = graphql.find(req.login, req.password);
   let user = false;
-  const login = req.body.login,
-    password = req.body.password;
-  if (login == 'user' && password == 'password') {
-    user = { user, login }
+  const login = req.body.login;
+  const password = req.body.password;
+  if (login === 'user' && password === 'password') {
+    user = { user, login };
   }
 
   if (user) {
@@ -93,7 +92,7 @@ app.post('/login', (req, res) => {
     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: false });
     res.json({ id_token: token });
   } else {
-    res.status(401).json({message: 'To login use user/password'});
+    res.status(401).json({ message: 'To login use user/password' });
   }
 });
 
@@ -134,7 +133,7 @@ app.get('*', async (req, res, next) => {
 
     if (req.user && req.user.login) {
       store.dispatch(receiveLogin({
-        id_token: req.cookies.id_token
+        id_token: req.cookies.id_token,
       }));
     } else {
       store.dispatch(receiveLogout());
@@ -161,7 +160,7 @@ app.get('*', async (req, res, next) => {
     };
 
       // eslint-disable-next-line no-underscore-dangle
-       css.add(theme._getCss());
+    css.add(theme._getCss());
 
     const data = {
       title: 'React Dashboard',
@@ -179,33 +178,33 @@ app.get('*', async (req, res, next) => {
       state: context.store.getState(),
     };
 
-       const html = ReactDOM.renderToString(
-         <StaticRouter
-           location={req.url}
-           context={context}
-         >
-           <Provider store={store}>
-             <App store={store} />
-           </Provider>
-         </StaticRouter>,
+    const html = ReactDOM.renderToString(
+      <StaticRouter
+        location={req.url}
+        context={context}
+      >
+        <Provider store={store}>
+          <App store={store} />
+        </Provider>
+      </StaticRouter>,
       );
 
-       data.styles = [
+    data.styles = [
         { id: 'css', cssText: [...css].join('') },
-       ];
+    ];
 
-       data.children = html;
+    data.children = html;
 
-       const markup = ReactDOM.renderToString(
-         <Html {...data} />,
+    const markup = ReactDOM.renderToString(
+      <Html {...data} />,
       );
 
-       res.status(200);
-       res.send(`<!doctype html>${markup}`);
-     } catch (err) {
-       next(err);
-     }
-   });
+    res.status(200);
+    res.send(`<!doctype html>${markup}`);
+  } catch (err) {
+    next(err);
+  }
+});
 
 //
 // Error handling

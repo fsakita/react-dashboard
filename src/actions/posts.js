@@ -41,7 +41,7 @@ function createPostError(message) {
 function requestFetchPosts() {
   return {
     type: FETCH_POSTS_REQUEST,
-    isFetching: true
+    isFetching: true,
   };
 }
 
@@ -86,8 +86,8 @@ export function createPost(post) {
 
     return fetch('/graphql', config)
       .then(response =>
-        response.json().then(post => ({ post, response })),
-      ).then(({ post, response }) => {
+        response.json().then(post => ({ post, response })), // eslint-disable-line
+      ).then(({ post, response }) => { // eslint-disable-line
         if (!response.ok) {
           // If there was a problem, we want to
           // dispatch the error condition
@@ -99,7 +99,8 @@ export function createPost(post) {
         setTimeout(() => {
           dispatch(createPostInitial());
         }, 5000);
-      }).catch(err => console.log('Error: ', err));
+        return 0;
+      }).catch(err => console.log('Error: ', err)); // eslint-disable-line
   };
 }
 
@@ -121,7 +122,7 @@ export function fetchPosts() {
 
     return fetch('/graphql', config)
       .then(response =>
-        response.json().then(response => ({ posts: response.data.posts, response })),
+        response.json().then(response => ({ posts: response.data.posts, response })), // eslint-disable-line
       ).then(({ posts, response }) => {
         if (!response.data.posts) {
           // If there was a problem, we want to
@@ -131,6 +132,7 @@ export function fetchPosts() {
         }
         // Dispatch the success action
         dispatch(fetchPostsSuccess(posts));
-      }).catch(err => console.log('Error: ', err));
+        return 0;
+      }).catch(err => console.log('Error: ', err)); // eslint-disable-line
   };
 }

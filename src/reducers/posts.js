@@ -1,6 +1,6 @@
 import {
   CREATE_POST_INITIAL, CREATE_POST_REQUEST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE,
-  FETCH_POSTS_REQUEST, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE
+  FETCH_POSTS_REQUEST, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE,
 } from '../actions/posts';
 
 export default function posts(state = {
@@ -10,7 +10,7 @@ export default function posts(state = {
     case CREATE_POST_INITIAL:
       return Object.assign({}, state, {
         isFetching: false,
-        message: null
+        message: null,
       });
     case CREATE_POST_REQUEST:
       return Object.assign({}, state, {
@@ -33,12 +33,12 @@ export default function posts(state = {
     case FETCH_POSTS_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        posts: action.posts
+        posts: action.posts,
       });
     case FETCH_POSTS_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        message: 'Something wrong happened. Please come back later'
+        message: 'Something wrong happened. Please come back later',
       });
     default:
       return state;

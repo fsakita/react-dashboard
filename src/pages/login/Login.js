@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { Row, Col, Grid, Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -10,6 +11,15 @@ import s from './Login.scss'; // eslint-disable-line
 import { loginUser } from '../../actions/user';
 
 class Login extends React.Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    location: PropTypes.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -17,6 +27,10 @@ class Login extends React.Component {
       login: '',
       password: '',
     };
+
+    this.doLogin = this.doLogin.bind(this);
+    this.changeLogin = this.changeLogin.bind(this);
+    this.changePassword = this.changePassword.bind(this);
   }
 
   changeLogin(event) {
@@ -38,7 +52,7 @@ class Login extends React.Component {
 
     if (this.props.isAuthenticated) { // cant access login page while logged in
       return (
-        <Redirect to={from}/>
+        <Redirect to={from} />
       );
     }
 
@@ -54,7 +68,7 @@ class Login extends React.Component {
                   User your username and password to sign in<br />
                   Don&#39;t have an account? Sign up now!
                 </p>
-                <form className="mt" onSubmit={this.doLogin.bind(this)}>
+                <form className="mt" onSubmit={this.doLogin}>
                   {
                     this.props.errorMessage && (
                       <Alert className="alert-sm" bsStyle="danger">
@@ -63,10 +77,10 @@ class Login extends React.Component {
                     )
                   }
                   <div className="form-group">
-                    <input className="form-control no-border" value={this.state.login} onChange={this.changeLogin.bind(this)} type="text" required name="username" placeholder="Username" />
+                    <input className="form-control no-border" value={this.state.login} onChange={this.changeLogin} type="text" required name="username" placeholder="Username" />
                   </div>
                   <div className="form-group">
-                    <input className="form-control no-border" value={this.state.password} onChange={this.changePassword.bind(this)} type="password" required name="password" placeholder="Password" />
+                    <input className="form-control no-border" value={this.state.password} onChange={this.changePassword} type="password" required name="password" placeholder="Password" />
                   </div>
                   <div className="clearfix">
                     <div className="btn-toolbar pull-right">
@@ -90,7 +104,7 @@ function mapStateToProps(state) {
   return {
     isFetching: state.auth.isFetching,
     isAuthenticated: state.auth.isAuthenticated,
-    errorMessage: state.auth.errorMessage
+    errorMessage: state.auth.errorMessage,
   };
 }
 
